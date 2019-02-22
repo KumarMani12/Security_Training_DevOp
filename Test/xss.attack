@@ -1,0 +1,11 @@
+Feature: Check for cross site scripting ( xss ) vulnurability using arachni against gruyere
+Background:
+
+Given "arachni" is installed
+Secnario: Do a full xss
+  when I launch as "arachni" attack with :
+  """
+
+arachni --check=XSS --scope-page-limit=1 http://172.17.0.2:8080/login
+"""
+Then the output should contain "0 issues were detected"
